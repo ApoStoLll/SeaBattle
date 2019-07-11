@@ -1,7 +1,7 @@
 package com.mooncode.seabattle;
 
 public class Map {
-    private  int[][] field;// = new int[10][10]; // 0 - clear, 1 - ship,
+    private  int[][] field; // 0 - clear, 1 - shot, 2 - ship
     public Map(){
         field = new int[10][10];
         for(int i = 0; i < 10; i++){
