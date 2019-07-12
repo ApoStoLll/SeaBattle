@@ -12,6 +12,7 @@ public class Player {
             this.number = number;
         }
         int getHp() { return this.hp; }
+        void shot() {this.hp--; }
         int getNumber() { return this.number; }
     }
     Ship getShip (int num){ return fleet[num]; }

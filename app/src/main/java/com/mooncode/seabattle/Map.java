@@ -1,7 +1,7 @@
 package com.mooncode.seabattle;
 
 public class Map {
-    private  int[][] field; // 0 - clear, -1 - shot, 2-3-... - ship
+    private  int[][] field; // -3 - dead(hurt) ship, -2 - clear, -1 - shot, 0-1-2-3-... - num of ship
     public Map(){
         field = new int[10][10];
         for(int i = 0; i < 10; i++){
@@ -10,14 +10,23 @@ public class Map {
             }
         }
     }
-    int shot(Coordinate a, Player b){    // 0 - error, 1 - miss, 2 - hurt, 3 - kill
-        if (field[a.getCoordinate('x')][a.getCoordinate('y')] == 0) {
-            field[a.getCoordinate('x')][a.getCoordinate('y')] = -1;
+    int shot(Coordinate coor, Player player){    // 0 - error, 1 - miss, 2 - hurt, 3 - kill
+        if (field[coor.getCoordinate('x')][coor.getCoordinate('y')] == -2) {
+            field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -1;
             return 1;
         }
-        if (field[a.getCoordinate('x')][a.getCoordinate('y')] > 0) {
-            if( b.getShip(field[a.getCoordinate('x')][a.getCoordinate('y')]).getHp() == 1 ) return 3;
-            else return 2;
+        if (field[coor.getCoordinate('x')][coor.getCoordinate('y')] > -1) {
+            if( player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).getHp() == 1 ) {
+                player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).shot();
+                field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -3;
+                // обвести корабль
+                return 3;
+            }
+            else{
+                player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).shot();
+                field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -3;
+                return 2;
+            }
         }
         else return 0;
     }
