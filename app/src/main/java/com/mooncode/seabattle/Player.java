@@ -26,7 +26,14 @@ public class Player {
         while(check(coor)){
             coor.random();
         }
-
+        if (deck == 1) {}//добавить корабль во флот
+        int x = coor.getCoordinate('x');
+        int y = coor.getCoordinate('y');
+        int rand = (int)(Math.random()*1000);
+        if (rand%4==0){x++;}
+        if (rand%4==1){y++;}
+        if (rand%4==2){x--;}
+        if (rand%4==3){y--;}
     }
     boolean check(Coordinate coor){
         int x = coor.getCoordinate('x');
