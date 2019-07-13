@@ -21,7 +21,6 @@ public class Player {
     }
     Ship getShip (int num){ return fleet[num]; }
     Ship[] getFleet() { return fleet; }
-    int randomInt(){ return (int)Math.random()*10; }
     void randomShip(int deck){
 
     }
