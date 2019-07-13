@@ -21,13 +21,13 @@ public class Player {
     }
     Ship getShip (int num){ return fleet[num]; }
     Ship[] getFleet() { return fleet; }
-    void randomShip(int deck){
+    /*void randomShip(int deck){
         Coordinate coor;
-        coor.random();
+        //coor.random();
         while(!field.getInfo(coor)){
             coor.random();
         }
 
-    }
+    }*/
     Map getField(){ return field; }
 }

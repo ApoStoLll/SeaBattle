@@ -25,6 +25,8 @@ public class Controller {
     public void push(Coordinate coords){
         this.coords = coords;
     }
+    public Player getPlayer1(){ return player1; }
+    public Player getPlayer2(){ return player2; }
 
 
 }

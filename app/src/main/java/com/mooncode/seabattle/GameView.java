@@ -3,17 +3,38 @@ package com.mooncode.seabattle;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 
 public class GameView {
+    Player player1;
+    Player player2;
+    GameView(Player player1, Player player2){
+        this.player1 = player1;
+        this.player2 = player2;
+    }
     class DrawView extends SurfaceView implements SurfaceHolder.Callback {
 
         private DrawThread drawThread;
+        private int width;
+        private int height;
+        private Paint p;
 
         public DrawView(Context context) {
             super(context);
+            WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            width = size.x;
+            height = size.y;
             getHolder().addCallback(this);
+            p = new Paint();
+            p.setStrokeWidth(10);
         }
 
         @Override
@@ -55,6 +76,17 @@ public class GameView {
                 this.running = running;
             }
 
+            public void drawMap(Canvas canvas, int c){
+                int w = width/20;//width/2;
+                for(int i = 0; i < 10; i++){
+                    for(int j = 0; j < 10; j++){
+                        p.setColor(Color.BLACK);
+                        p.setStyle(Paint.Style.STROKE);
+                        canvas.drawRect(i * w + c, j * w, (i+1) * w + c, (j+1) * w, p);
+                    }
+                }
+            }
+
             @Override
             public void run() {
                 Canvas canvas;
@@ -64,7 +96,13 @@ public class GameView {
                         canvas = surfaceHolder.lockCanvas(null);
                         if (canvas == null)
                             continue;
-                        canvas.drawColor(Color.GREEN);
+                        //TUT DRAW
+                        //canvas.drawColor(Color.GREEN);
+                        drawMap(canvas, 0);
+                        drawMap(canvas, width/2);
+                        p.setColor(Color.RED);
+                        canvas.drawLine(width/2,0,width/2 + 2,height, p);//ОТЕДЛЯЕМ СЕРЕДИНУ
+
                     } finally {
                         if (canvas != null) {
                             surfaceHolder.unlockCanvasAndPost(canvas);
