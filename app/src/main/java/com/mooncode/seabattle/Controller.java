@@ -15,7 +15,7 @@ public class Controller {
             //Game
             if(step % 2 == 0){
                 //First player
-
+                player2.getField().shot(coords);
             }
             else{
                 //Secont player

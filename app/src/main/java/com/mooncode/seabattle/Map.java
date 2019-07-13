@@ -2,7 +2,9 @@ package com.mooncode.seabattle;
 
 public class Map {
     private  int[][] field; // -3 - dead(hurt) ship, -2 - clear, -1 - shot, 0-1-2-3-... - num of ship
-    public Map(){
+    private Player player;
+    public Map(Player player){
+        this.player = player;
         field = new int[10][10];
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
@@ -10,7 +12,7 @@ public class Map {
             }
         }
     }
-    int shot(Coordinate coor, Player player){    // 0 - error, 1 - miss, 2 - hurt, 3 - kill
+    int shot(Coordinate coor){    // 0 - error, 1 - miss, 2 - hurt, 3 - kill
         if (field[coor.getCoordinate('x')][coor.getCoordinate('y')] == -2) {
             field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -1;
             return 1;

@@ -3,6 +3,9 @@ package com.mooncode.seabattle;
 public class Player {
     private Ship[] fleet;
     private Map field;
+    Player(){
+        field = new Map(this);
+    }
     public class Ship {
         private Coordinate[] position;
         private int hp;
