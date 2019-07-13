@@ -6,7 +6,7 @@ public class Map {
         field = new int[10][10];
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
-                this.field[i][j]=0;
+                this.field[i][j] = -2;
             }
         }
     }
@@ -16,17 +16,13 @@ public class Map {
             return 1;
         }
         if (field[coor.getCoordinate('x')][coor.getCoordinate('y')] > -1) {
-            if( player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).getHp() == 1 ) {
-                player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).shot();
-                field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -3;
+            player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).shot();
+            field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -3;
+            if( player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).getHp() == 1 )
                 // обвести корабль
                 return 3;
-            }
-            else{
-                player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).shot();
-                field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -3;
+            else
                 return 2;
-            }
         }
         else return 0;
     }
