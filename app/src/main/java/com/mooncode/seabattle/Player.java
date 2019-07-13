@@ -21,13 +21,26 @@ public class Player {
     }
     Ship getShip (int num){ return fleet[num]; }
     Ship[] getFleet() { return fleet; }
-    /*void randomShip(int deck){
-        Coordinate coor;
-        //coor.random();
-        while(!field.getInfo(coor)){
+    void randomShip(int deck){
+        Coordinate coor = new Coordinate();
+        while(check(coor)){
             coor.random();
         }
 
-    }*/
+    }
+    boolean check(Coordinate coor){
+        int x = coor.getCoordinate('x');
+        int y = coor.getCoordinate('y');
+        if (field.getInfo(x,y)) return true;
+        if(((x+1)<10)&((y+1)<10))  if (field.getInfo(x+1,y+1)) return true;
+        if(((x+1)<10)&((y)<10))  if (field.getInfo(x+1,y)) return true;
+        if(((x+1)<10)&((y-1)<10))  if (field.getInfo(x+1,y-1)) return true;
+        if(((x-1)<10)&((y+1)<10))  if (field.getInfo(x-1,y+1)) return true;
+        if(((x-1)<10)&((y)<10))  if (field.getInfo(x-1,y)) return true;
+        if(((x-1)<10)&((y-1)<10))  if (field.getInfo(x-1,y-1)) return true;
+        if(((x)<10)&((y+1)<10))  if (field.getInfo(x+1,y+1)) return true;
+        if(((x)<10)&((y-1)<10))  if (field.getInfo(x+1,y-1)) return true;
+        return false;
+    }
     Map getField(){ return field; }
 }
