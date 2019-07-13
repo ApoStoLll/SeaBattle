@@ -23,9 +23,10 @@ public class Player {
     Ship[] getFleet() { return fleet; }
     void randomShip(int deck){
         Coordinate coor;
-        do{
-            Coordinate coor;
-        }while(!field.getInfo(coor));
+        coor.random();
+        while(!field.getInfo(coor)){
+            coor.random();
+        }
 
     }
     Map getField(){ return field; }
