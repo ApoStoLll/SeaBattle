@@ -68,20 +68,26 @@ public class GameView {
             private boolean running = false;
             private SurfaceHolder surfaceHolder;
 
-            public DrawThread(SurfaceHolder surfaceHolder) {
+            DrawThread(SurfaceHolder surfaceHolder) {
                 this.surfaceHolder = surfaceHolder;
             }
 
-            public void setRunning(boolean running) {
+            void setRunning(boolean running) {
                 this.running = running;
             }
 
-            public void drawMap(Canvas canvas, int c){
+            void drawMap(Canvas canvas, int c, int[][] field){
                 int w = width/20;//width/2;
                 for(int i = 0; i < 10; i++){
                     for(int j = 0; j < 10; j++){
-                        p.setColor(Color.BLACK);
-                        p.setStyle(Paint.Style.STROKE);
+                        if(field[i][j] == -2) { //CLEAR
+                            p.setColor(Color.BLACK);
+                            p.setStyle(Paint.Style.STROKE);
+                        }
+                        if(field[i][j] == -1) { //SHOT
+                            p.setColor(Color.RED);
+                            p.setStyle(Paint.Style.FILL);
+                        }
                         canvas.drawRect(i * w + c, j * w, (i+1) * w + c, (j+1) * w, p);
                     }
                 }
@@ -98,8 +104,8 @@ public class GameView {
                             continue;
                         //TUT DRAW
                         //canvas.drawColor(Color.GREEN);
-                        drawMap(canvas, 0);
-                        drawMap(canvas, width/2);
+                        drawMap(canvas, 0, player1.getField().getField());
+                        drawMap(canvas, width/2, player2.getField().getField());
                         p.setColor(Color.RED);
                         canvas.drawLine(width/2,0,width/2 + 2,height, p);//ОТЕДЛЯЕМ СЕРЕДИНУ
 

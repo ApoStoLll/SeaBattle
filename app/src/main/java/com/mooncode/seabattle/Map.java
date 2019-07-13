@@ -32,4 +32,6 @@ public class Map {
         if (field[x][y] == -2) return false;
         else return true;
     }
+
+    int[][] getField(){ return field;}
 }

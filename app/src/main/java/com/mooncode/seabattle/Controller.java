@@ -10,7 +10,7 @@ public class Controller {
         player2 = new Player();
     }
 
-    public int gameBody(){
+   /* public int gameBody(){
         //while(player1.getFleet().length > 0 && player2.getFleet().length > 0){
         //Game
         if(step % 2 == 0){
@@ -21,12 +21,21 @@ public class Controller {
             //Secont player
             return player1.getField().shot(coords);
         }
-    }
-    public void push(Coordinate coords){
+    }*/
+    void push(Coordinate coords){
         this.coords = coords;
+        int res = 0;
+        if(step % 2 == 0){
+            //First player
+             player2.getField().shot(coords);
+        }
+        else{
+            //Secont player
+             player1.getField().shot(coords);
+        }
     }
-    public Player getPlayer1(){ return player1; }
-    public Player getPlayer2(){ return player2; }
-
+    Player getPlayer1(){ return player1; }
+    Player getPlayer2(){ return player2; }
+    int getStep(){ return step; }
 
 }
