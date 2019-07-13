@@ -2,7 +2,7 @@ package com.mooncode.seabattle;
 
 public class Coordinate {
     private int x,y;
-    public Coordinate(){
+    void random(){
         this.x = (int)(Math.random()*10);
         this.y = (int)(Math.random()*10);
     }

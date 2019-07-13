@@ -28,4 +28,8 @@ public class Map {
         }
         else return 0;
     }
+    int getInfo(Coordinate coor){
+        if (field[coor.getCoordinate('x')][coor.getCoordinate('y')] == -2) return 1;
+        else return 0;
+    }
 }
