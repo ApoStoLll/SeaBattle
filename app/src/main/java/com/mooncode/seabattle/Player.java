@@ -16,4 +16,6 @@ public class Player {
         int getNumber() { return this.number; }
     }
     Ship getShip (int num){ return fleet[num]; }
+    Ship[] getFleet() { return fleet; }
+
 }
