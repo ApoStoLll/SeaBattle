@@ -22,4 +22,5 @@ public class Player {
     void randomShip(int deck){
 
     }
+    Map getField(){ return field; }
 }
