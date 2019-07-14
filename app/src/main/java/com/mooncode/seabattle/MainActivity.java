@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         Log.d("MYLOG","NewX(int): " + (int)(x*10/width) + "NewY(int): " + (int)(y*10/height));
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: // нажатие
-                if((controller.getStep() % 2 == 0 && x > width/2) ||
-                        (controller.getStep() % 2 != 0 && x < width/2))
-                controller.push(new Coordinate((int)(x*10 / width), (int)(y*10 / height)));
-
+                if(controller.getStep() % 2 == 0 && x > width/2)
+                    controller.push(new Coordinate(((int)(x*20 / width))-10, (int)(y*10 / height)));
+                if(controller.getStep() % 2 != 0 && x < width/2)
+                    controller.push(new Coordinate(((int)(x*20 / width)), (int)(y*10 / height)));
                 break;
         }
         drawView.postInvalidate();
