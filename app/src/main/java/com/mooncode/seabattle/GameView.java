@@ -84,7 +84,11 @@ public class GameView {
                             p.setColor(Color.BLACK);
                             p.setStyle(Paint.Style.STROKE);
                         }
-                        if(field[i][j] == -1) { //SHOT
+                        if(field[i][j] == -1) { //CLEAR
+                            p.setColor(Color.GREEN);
+                            p.setStyle(Paint.Style.FILL);
+                        }
+                        if(field[i][j] == -3) { //SHOT
                             p.setColor(Color.RED);
                             p.setStyle(Paint.Style.FILL);
                         }

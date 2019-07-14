@@ -24,7 +24,7 @@ public class Controller {
     }*/
     void push(Coordinate coords){
         this.coords = coords;
-        int res = 0;
+        //int res = 0;
         if(step % 2 == 0){
             //First player
              player2.getField().shot(coords);
@@ -33,6 +33,7 @@ public class Controller {
             //Secont player
              player1.getField().shot(coords);
         }
+        step++;
     }
     Player getPlayer1(){ return player1; }
     Player getPlayer2(){ return player2; }
