@@ -21,32 +21,42 @@ public class Player {
     }
     Ship getShip (int num){ return fleet[num]; }
     Ship[] getFleet() { return fleet; }
-    void randomShip(int deck){
+    void randomFleet(){
+        fleet = new Ship[4]; //10
+        //fleet[0] = randomShip(4,0);
+        //for(int i = 1;i<3;i++) fleet[i] = randomShip(3,i);
+        //for(int i = 3;i<6;i++) fleet[i] = randomShip(2,i);
+        //for(int i = 6;i<10;i++) fleet[i] = randomShip(1,i);
+        for(int i = 0;i<4;i++) fleet[i] = randomShip(1,i);
+    }
+    Ship randomShip(int deck,int num){
         Coordinate coor = new Coordinate();
-        while(check(coor)){
+        int x = coor.getCoordinate('x');
+        int y = coor.getCoordinate('y');
+        while(check(x,y)){
             coor.random();
         }
-        if (deck == 1) {}//добавить корабль во флот
-        int x = coor.getCoordinate('x');
-        int y = coor.getCoordinate('y');
-        int rand = (int)(Math.random()*1000);
-        if (rand%4==0){x++;}
-        if (rand%4==1){y++;}
-        if (rand%4==2){x--;}
-        if (rand%4==3){y--;}
+        //if (true) {
+            Coordinate[] position = new Coordinate[deck];
+            position[0] = coor;
+            Ship boat = new Ship(deck,num,position);
+            return boat;
+       // }
+
+        //int rand = (int)(Math.random()*1000);
+       // if (rand%4==0){x++; if(check(x,y));}
+        //if (rand%4==1){y++;}
+       // if (rand%4==2){x--;}
+       // if (rand%4==3){y--;}
     }
-    boolean check(Coordinate coor){
-        int x = coor.getCoordinate('x');
-        int y = coor.getCoordinate('y');
-        if (field.getInfo(x,y)) return true;
-        if(((x+1)<10)&((y+1)<10))  if (field.getInfo(x+1,y+1)) return true;
-        if(((x+1)<10)&((y)<10))  if (field.getInfo(x+1,y)) return true;
-        if(((x+1)<10)&((y-1)<10))  if (field.getInfo(x+1,y-1)) return true;
-        if(((x-1)<10)&((y+1)<10))  if (field.getInfo(x-1,y+1)) return true;
-        if(((x-1)<10)&((y)<10))  if (field.getInfo(x-1,y)) return true;
-        if(((x-1)<10)&((y-1)<10))  if (field.getInfo(x-1,y-1)) return true;
-        if(((x)<10)&((y+1)<10))  if (field.getInfo(x+1,y+1)) return true;
-        if(((x)<10)&((y-1)<10))  if (field.getInfo(x+1,y-1)) return true;
+    boolean check(int x,int y){
+        if (x > 10 || y > 10 || x < 0 || y < 0) return true;
+        for(int i = x-1;i<x+2;i++){
+            for(int j = y-1;j<y+2;j++){
+                if (i < 10 & j < 10 & i > -1 & j > -1)
+                    if (field.getInfo(i,j)) return true;
+            }
+        }
         return false;
     }
     Map getField(){ return field; }
