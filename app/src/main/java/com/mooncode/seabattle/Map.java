@@ -32,6 +32,8 @@ public class Map {
         if (field[x][y] == -2) return false;
         else return true;
     }
-
+    void setShip(Coordinate coor,int num){
+        field[coor.getCoordinate('x')][coor.getCoordinate('y')] = num;
+    }
     int[][] getField(){ return field;}
 }
