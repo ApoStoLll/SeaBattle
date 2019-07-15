@@ -19,16 +19,17 @@ public class Player {
         int getHp() { return this.hp; }
         void shot() {this.hp--; }
         int getNumber() { return this.number; }
+        Coordinate[] getCoordinate(){ return this.position;}
     }
     Ship getShip (int num){ return fleet[num]; }
     Ship[] getFleet() { return fleet; }
     void randomFleet(){
-        fleet = new Ship[1]; //10
+        fleet = new Ship[4]; //10
         //fleet[0] = randomShip(4,0);
         //for(int i = 1;i<3;i++) fleet[i] = randomShip(3,i);
         //for(int i = 3;i<6;i++) fleet[i] = randomShip(2,i);
         //for(int i = 6;i<10;i++) fleet[i] = randomShip(1,i);
-        for(int i = 0;i<1;i++) fleet[i] = randomShip(1,i);
+        for(int i = 0;i<4;i++) fleet[i] = randomShip(1,i);
     }
     Ship randomShip(int deck,int num){
         Coordinate coor = new Coordinate();
