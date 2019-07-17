@@ -19,11 +19,15 @@ public class Map {
         }
         if (field[coor.getCoordinate('x')][coor.getCoordinate('y')] > -1) {
             player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).shot();
-            field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -3;
-            if( player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).getHp() == 1 )
+
+            if( player.getShip(field[coor.getCoordinate('x')][coor.getCoordinate('y')]).getHp() == 1 ) {
+                field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -3;
                 // обвести корабль
+
                 return 3;
+            }
             else
+                field[coor.getCoordinate('x')][coor.getCoordinate('y')] = -3;
                 return 2;
         }
         else return 0;

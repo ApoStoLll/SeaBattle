@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         //Log.d("MYLOG","w: " + width + "h: " + height);
         //Log.d("MYLOG","NewX: " + x*10/width + "NewY: " + y*10/height);
         //Log.d("MYLOG","NewX(int): " + (int)(x*10/width) + "NewY(int): " + (int)(y*10/height));
-        for(int i=0;i<4;i++){
+        for(int i=0;i<2;i++){
             int a = controller.getPlayer1().getFleet()[i].getCoordinate()[0].getCoordinate('x');
             int b = controller.getPlayer1().getFleet()[i].getCoordinate()[0].getCoordinate('y');
             Log.d("MYLOG","Ship " + i + " - "+ a + ':'+b);
